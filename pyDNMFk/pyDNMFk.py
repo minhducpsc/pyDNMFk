@@ -150,6 +150,7 @@ class PyNMFk():
         self.L_errDist = 0
         self.avgErr = 0
         self.start_k = self.params.start_k  # ['start_k']
+        self.step_k = self.params.step_k  # ['step_k']
         self.end_k = self.params.end_k  # ['end_k']
         self.sill_thr = var_init(params,'sill_thr',default=0.9)
         self.verbose = var_init(params,'verbose',default=False)
@@ -174,7 +175,7 @@ class PyNMFk():
         if self.rank == 0:
             try: os.makedirs(self.params.results_paths)
             except: pass
-        for self.k in range(self.start_k, self.end_k + 1):
+        for self.k in range(self.start_k, self.end_k + 1, self.step_k):
             self.params.k = self.k
             self.pynmfk_per_k()
             SILL_MIN.append(round(np.min(self.clusterSilhouetteCoefficients), 2))
