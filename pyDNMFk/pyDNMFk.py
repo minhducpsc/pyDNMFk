@@ -186,7 +186,7 @@ class PyNMFk():
         if self.rank == 0:
             nopt1, pvalue1 = self.pvalueAnalysis(errRegres, SILL_MIN)
             print('Rank estimated by NMFk = ', nopt1)
-            plot_results(self.start_k, self.end_k, RECON, RECON1, SILL_MIN, self.params.results_path, self.fname)
+            plot_results(self.start_k, self.end_k, self.step_k, RECON, RECON1, SILL_MIN, self.params.results_path, self.fname)
         else:
             nopt1 = None
         nopt1 = self.comm1.bcast(nopt1, root=0)
@@ -246,7 +246,8 @@ class PyNMFk():
         i_old = 0
         nopt = 1
 
-        while i < (self.end_k - self.start_k + 1):
+        while i < len(SILL_MIN):
+        # while i < (self.end_k - self.start_k + 1):
             i_next = i
             if SILL_MIN[i - 1] > self.sill_thr:  # 0.75:
                 pvalue[i] = wilcoxon(oneDistrErr, errRegres[i][0])[1]
