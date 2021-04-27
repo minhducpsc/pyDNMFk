@@ -13,7 +13,7 @@ from scipy.io import loadmat
 def dist_nmfk_1d_nnsvd_init_wtsi():
     from mpi4py import MPI
     comm = MPI.COMM_WORLD
-    p_r, p_c = 4, 1
+    p_r, p_c = 10, 1
     comms = MPI_comm(comm, p_r, p_c)
     comm1 = comms.comm
     rank = comm.rank
@@ -26,11 +26,11 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.fname = 'wtsi'
     args.ftype = 'mat'
     args.start_k = 2
-    args.step_k = 2
-    args.end_k = 5
+    args.step_k = 3
+    args.end_k = 10
     args.sill_thr = 0.9
     args.itr = 1000
-    args.init = 'nnsvd'
+    args.init = 'rand'
     args.verbose = True
     args.norm = 'fro'
     args.method = 'hals'

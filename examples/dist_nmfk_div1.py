@@ -30,7 +30,7 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.end_k = 10
     args.sill_thr = 0.9
     args.itr = 1000
-    args.init = 'nnsvd'
+    args.init = 'rand'
     args.verbose = True
     args.norm = 'fro'
     args.method = 'hals'
