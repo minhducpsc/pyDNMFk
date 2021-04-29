@@ -13,7 +13,7 @@ from scipy.io import loadmat
 def dist_nmfk_1d_nnsvd_init_wtsi():
     from mpi4py import MPI
     comm = MPI.COMM_WORLD
-    p_r, p_c = 1, 10
+    p_r, p_c = 1, 50
     comms = MPI_comm(comm, p_r, p_c)
     comm1 = comms.comm
     rank = comm.rank
@@ -26,8 +26,10 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.fname = 'div1'
     args.ftype = 'mat'
     args.start_k = 2
-    args.step_k = 2
-    args.end_k = 10
+    args.step_k = 5
+    args.end_k = 90
+    args.perturbations = 200
+    args.noise_var = 0.03
     args.sill_thr = 0.9
     args.itr = 1000
     args.init = 'rand'

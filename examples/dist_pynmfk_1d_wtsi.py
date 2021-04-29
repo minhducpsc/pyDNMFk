@@ -26,8 +26,9 @@ def dist_nmfk_1d_nnsvd_init_wtsi():
     args.fname = 'wtsi'
     args.ftype = 'mat'
     args.start_k = 2
-    args.step_k = 3
-    args.end_k = 10
+    args.step_k = 2
+    args.end_k = 8
+    args.perturbations=5
     args.sill_thr = 0.9
     args.itr = 1000
     args.init = 'rand'
